@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Delete, Get, ParseIntPipe, Post } from '@nestjs/common';
 
 @Controller('customers')
 export class CustomersController {
@@ -14,5 +14,10 @@ export class CustomersController {
   @Get()
   findAll() {
     return this.customersService.findAll();
+  }
+
+  @Delete('id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.costumersService.remove(id);
   }
 }
